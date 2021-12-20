@@ -22,7 +22,17 @@ public class Server{
                 messageFromClient = dataInputStream.readUTF();
                 System.out.println("From Client: "+ messageFromClient);
 
-                //send message from server to client
+                //sending the list of files in the directory
+                if(messageFromClient.equals("ls")){
+                    File file = new File("../ClientServer");
+                    File[] files = file.listFiles();
+                    for(int i=0;i<files.length;i++){
+                        dataOutputStream.writeUTF(files[i].getName());
+                    }
+                    dataOutputStream.writeUTF("FINISHED");
+                }
+
+                //send message to client
                 System.out.print("Send to Client: ");
                 messageToClient = bufferedReader.readLine();
                 dataOutputStream.writeUTF(messageToClient);
