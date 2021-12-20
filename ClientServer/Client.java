@@ -14,11 +14,22 @@ public class Client{
             //create strings to store and send messages
             String messageFromServer="",messageToServer="";
 
-            while(!messageFromServer.equals("END")){
+            while(!messageToServer.equals("END")){
                 // send message to server
                 System.out.print("Send to Server: ");
                 messageToServer = bufferedReader.readLine();
                 dataOutputStream.writeUTF(messageToServer);
+
+                if(messageToServer.equals("ls")){
+                    System.out.println("\nList of files:");
+                    while(true){
+                        String list = dataInputStream.readUTF();
+                        if(list.equals("FINISHED")){
+                            break;
+                        }
+                        System.out.println("\t"+list);
+                    }
+                }
 
                 //read message from client
                 messageFromServer = dataInputStream.readUTF();
