@@ -23,7 +23,7 @@ public class Server{
                 System.out.println("From Client: "+ messageFromClient);
 
                 //send message from server to client
-                System.out.print("From Server: ");
+                System.out.print("Send to Client: ");
                 messageToClient = bufferedReader.readLine();
                 dataOutputStream.writeUTF(messageToClient);
             }

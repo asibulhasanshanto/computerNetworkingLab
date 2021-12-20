@@ -15,10 +15,12 @@ public class Client{
             String messageFromServer="",messageToServer="";
 
             while(!messageFromServer.equals("END")){
-                System.out.print("From Client: ");
+                // send message to server
+                System.out.print("Send to Server: ");
                 messageFromServer = bufferedReader.readLine();
                 dataOutputStream.writeUTF(messageFromServer);
 
+                //read message from client
                 messageToServer = dataInputStream.readUTF();
                 System.out.println("From Server: "+ messageToServer);
             }
