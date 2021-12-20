@@ -17,12 +17,12 @@ public class Client{
             while(!messageFromServer.equals("END")){
                 // send message to server
                 System.out.print("Send to Server: ");
-                messageFromServer = bufferedReader.readLine();
-                dataOutputStream.writeUTF(messageFromServer);
+                messageToServer = bufferedReader.readLine();
+                dataOutputStream.writeUTF(messageToServer);
 
                 //read message from client
-                messageToServer = dataInputStream.readUTF();
-                System.out.println("From Server: "+ messageToServer);
+                messageFromServer = dataInputStream.readUTF();
+                System.out.println("From Server: "+ messageFromServer);
             }
 
             //close the socket
